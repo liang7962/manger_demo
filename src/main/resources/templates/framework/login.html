@@ -1,0 +1,65 @@
+<html><!DOCTYPE html>
+<#assign base="${springMacroRequestContext.contextPath}"/>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="renderer" content="webkit">
+    <title>综合业务管理平台 - 惠付通</title>
+    <meta name="keywords" content="综合业务管理平台 - 惠付通">
+    <meta name="description" content="综合业务管理平台 - 惠付通">
+    
+    <link rel="shortcut icon" href="${base}/hplus/img/hft-logo.jpg">
+    <link href="${base}/hplus/css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+    <link href="${base}/hplus/css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+    <link href="${base}/hplus/css/animate.min.css" rel="stylesheet">
+    <link href="${base}/hplus/css/style.min862f.css?v=4.1.0" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <meta http-equiv="refresh" content="0;ie.html" />
+    <![endif]-->
+    <script>if(window.top !== window.self){ window.top.location = window.location;}</script>
+      <script src="${base}/hplus/js/common.js"></script>
+</head>
+
+<body class="gray-bg">
+    <div class="middle-box text-center loginscreen  animated fadeInDown">
+        <div>
+            <div>
+                <h1 class="logo-name">惠</h1>
+            </div>
+            <h3>惠付通 - 综合业务管理平台</h3>
+
+            <form class="m-t" role="form" autocomplete="off" action="${base}/index" method="post" >
+                <div class="form-group"> 
+                    <input type="text" id="" maxlength="11" onkeyup="isSpecialChar(this)" name="mobileNo" autocomplete="off" class="form-control" placeholder="用户名" value="15927448536" required>
+                </div>
+               
+                <div class="form-group">
+                    <input type="password" style="display:none">
+	                <input type="text" name="password" onkeyup="isSpecialChar(this)" autocomplete="off" oninput="if(this.value==''){this.type='text'}else(this.type='password')" class="form-control" maxlength="20"  placeholder="密码" value="123456" required>
+                </div>
+                <button type="submit" class="btn btn-primary block full-width m-b">登 录</button>
+
+            </form>
+        </div>
+        
+        <#if msg??>
+	       	<div class="alert alert-danger">
+	       		${msg!}
+			</div> 
+        </#if>
+		        
+        <div style="margin-top:10px;">
+        	惠付通有限公司版权所有
+        </div>
+    </div>
+	<script type="text/javascript">
+		//防止页面后退
+		history.pushState(null, null, document.URL);
+		window.addEventListener('popstate', function () {
+		    history.pushState(null, null, document.URL);
+		});
+		 
+	</script>
+</body>
+
+</html>
