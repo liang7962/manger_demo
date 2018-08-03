@@ -4,9 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="renderer" content="webkit">
-    <title>综合业务管理平台 - 惠付通</title>
-    <meta name="keywords" content="综合业务管理平台 - 惠付通">
-    <meta name="description" content="综合业务管理平台 - 惠付通">
+    <title>彩票业务管理平台 - 惠配通</title>
+    <meta name="keywords" content="彩票业务管理平台 - 惠配通">
+    <meta name="description" content="彩票业务管理平台 - 惠配通">
     
     <link rel="shortcut icon" href="${base}/hplus/img/hft-logo.jpg">
     <link href="${base}/hplus/css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
@@ -26,17 +26,29 @@
             <div>
                 <h1 class="logo-name">惠</h1>
             </div>
-            <h3>惠付通 - 综合业务管理平台</h3>
+            <h3>惠配通 - 彩票业务管理平台</h3>
 
-            <form class="m-t" role="form" autocomplete="off" action="${base}/index" method="post" >
+            <form class="m-t" role="form" id="form1" autocomplete="off" action="${base}/index" method="post" >
                 <div class="form-group"> 
-                    <input type="text" id="" maxlength="11" onkeyup="isSpecialChar(this)" name="mobileNo" autocomplete="off" class="form-control" placeholder="用户名" value="15927448536" required>
+                    <input type="text" id="" maxlength="11" onkeyup="isSpecialChar(this)" name="mobileNo" autocomplete="off" class="form-control" placeholder="用户名" value="" required>
                 </div>
                
                 <div class="form-group">
                     <input type="password" style="display:none">
-	                <input type="text" name="password" onkeyup="isSpecialChar(this)" autocomplete="off" oninput="if(this.value==''){this.type='text'}else(this.type='password')" class="form-control" maxlength="20"  placeholder="密码" value="123456" required>
+	                <input type="text" name="password" onkeyup="isSpecialChar(this)" autocomplete="off" oninput="if(this.value==''){this.type='text'}else(this.type='password')" class="form-control" maxlength="20"  placeholder="密码" value="" required>
                 </div>
+                <div class="radio i-checks">
+                    <label>
+                        <input type="radio"  checked="" value="1" name="role">
+                        <i></i> 管理员
+                    </label>
+                    &nbsp;&nbsp;&nbsp;
+                    <label>
+                        <input type="radio" checked="" value="4" name="role">
+                        <i></i> 代理商
+                    </label>
+                </div>
+
                 <button type="submit" class="btn btn-primary block full-width m-b">登 录</button>
 
             </form>
@@ -49,7 +61,7 @@
         </#if>
 		        
         <div style="margin-top:10px;">
-        	惠付通有限公司版权所有
+        	惠配通有限公司版权所有
         </div>
     </div>
 	<script type="text/javascript">
@@ -58,7 +70,7 @@
 		window.addEventListener('popstate', function () {
 		    history.pushState(null, null, document.URL);
 		});
-		 
+
 	</script>
 </body>
 
