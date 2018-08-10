@@ -1,0 +1,44 @@
+<#if page?? && page.totalCount??>
+
+<#if page.totalCount % page.numPerPage == 0>
+	<#assign totalPageNum="${(page.totalCount / page.numPerPage)?int}">
+<#else>
+	<#assign totalPageNum="${(page.totalCount / page.numPerPage)?int + 1}">
+</#if>
+
+<div class="panelBar">
+	<div align="left" style="float:left;">
+		<ul class="pagination">
+			<li><a href="#">共${page.totalCount}条记录<#if page.totalCount!=0>[${page.pageNum}/${totalPageNum}]</#if></a></li>
+		</ul>
+	</div>
+	<div align="right">
+		<ul class="pagination">
+			<#if page.totalCount &gt; 0>
+			 	<#if page.pageNum &gt; 1>
+		 		 	<#if totalPageNum?number &gt; 2>
+						<#if page.pageNum &gt; 2>
+							<li><a href="javascript:void(0);" onclick="toModalPage(1);">首页</a></li>
+						</#if>
+						<li><a href="javascript:void(0);" onclick="preModalPage();">上一页</a></li>
+					<#else>
+						<li><a href="javascript:void(0);" onclick="preModalPage();">上一页</a></li>
+					</#if>
+			 	</#if>
+				<#if totalPageNum?number &gt; 2>
+					<#if page.pageNum &lt; totalPageNum?number>
+						<li><a href="javascript:void(0);" onclick="nextModalPage();">下一页</a></li>
+					</#if>
+					<#if page.pageNum &lt; (totalPageNum?number - 1)>
+						<li><a href="javascript:void(0);" onclick="toModalPage(<#if page.totalCount % page.numPerPage == 0>${(page.totalCount / page.numPerPage)?int}<#else>${(page.totalCount / page.numPerPage)?int + 1}</#if>);">末页</a></li>
+					</#if>
+		 		<#else>
+		 			<#if page.pageNum &lt; totalPageNum?number>
+		 				<li><a href="javascript:void(0);" onclick="nextModalPage();">下一页</a></li>
+		 			</#if>
+		 		</#if>
+			</#if>
+		</ul>
+	</div>
+</div>
+</#if>

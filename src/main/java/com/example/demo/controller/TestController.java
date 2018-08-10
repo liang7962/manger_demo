@@ -14,7 +14,7 @@ public class TestController {
 
     @GetMapping("test.do")
     public String toTest(){
-        AdminRegister ar = testService.getList("0120180724000004");
+        AdminRegister ar = testService.getAdminRegistert("0120180724000004");
         return ar.getMobileNo()+"wewe";
     }
 }

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<#assign base="${springMacroRequestContext.contextPath}"/>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <title>HJL - XX查询</title>
+
+    <meta name="keywords" content="HJL - XX查询">
+    <meta name="description" content="HJL - XX查询">
+    
+    <link rel="shortcut icon" href="${base}/hplus/img/hft-logo.jpg">
+    <link href="${base}/hplus/css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+    <link href="${base}/hplus/css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+    <link href="${base}/hplus/css/animate.min.css" rel="stylesheet">
+    <link href="${base}/hplus/css/style.min862f.css?v=4.1.0" rel="stylesheet">
+    <link href="${base}/hplus/css/plugins/chosen/chosen.css" rel="stylesheet">
+     <!-- Data Tables -->
+    <link href="${base}/hplus/css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
+    <link href="${base}/hplus/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet">
+
+</head>
+
+<body class="gray-bg" id="bodycontent">
+	<div class="wrapper wrapper-content animated fadeInRight">
+		<div class="row">
+			<div class="col-sm-12">
+			    <div class="ibox float-e-margins">
+   			    	<div class="ibox-title">
+                        <h5>交易流水导出</h5>
+                     </div>
+			    	 <div class="ibox-content">
+					    <form class="form-horizontal" id="pagerForm" action="${base}/trans/export_trans_ins_jnls"  method="post" >
+                        <#include "../page/page_params.html"/>
+                        	<div class="row">
+                        		<label class="col-sm-2 control-label">开始日期：</label>
+		                        <div class="col-sm-2">
+		                            <input placeholder="开始日期" autocomplete="off" class="form-control input-sm" readonly="readonly" id="start" name="orderBegin" maxlength="10" value="<#if dto??>${dto.orderBegin!}</#if>">
+		                        </div>
+ 		                        <label class="col-sm-2 control-label">结束日期：</label>
+		                        <div class="col-sm-2">
+		                            <input placeholder="结束日期" autocomplete="off" class="form-control input-sm" readonly="readonly" id="end" name="orderEnd" maxlength="10" value="<#if dto??>${dto.orderEnd!}</#if>">
+		                        </div>
+								<label class="control-label col-sm-2">代理商编号：</label>
+								<div class="col-sm-2">
+									<input class="form-control input-sm" type="tel" name="agentNo" value="<#if dto??>${dto.agentNo!}</#if>" onkeyup="value=value.replace(/[^\d.]/g,'')" maxlength="32" onbeforepaste="value=value.replace(/[^\d.]/g,'')"  placeholder="代理商编号"/>
+								</div>
+							</div>
+							<div class="clearfix" style="margin-bottom: 10px;"></div><!-- 清除浮动 -->
+							<div class="row">
+								<label class="col-sm-2 control-label">导出类型：</label>
+								<div class="input-group">
+									<select name="link" data-placeholder="请选导出类型" class="chzn-select-noSearch" style="width:120px;">
+										<#if role?? && role == '4'>
+											<option value="2" <#if dto.link ?? && dto.link == '2'>selected</#if> >个人流水导出</option>
+										</#if>
+										<option value="1" <#if dto.link ?? && dto.link == '1'>selected</#if> >下级流水导出</option>
+								</select>
+							</div>
+							</div>
+                        	<div class="clearfix" style="margin-bottom: 10px;"></div><!-- 清除浮动 -->
+                        	<div class="row">
+                        		<div class="col-sm-2 col-sm-offset-1">
+									<div class="btn-group">
+										<button class="btn btn-primary btn-outline btn-sm" type="submit"><i class="fa fa-search"></i>&nbsp;导出</button>
+									</div>
+                        		</div>
+                        	</div>
+                       	</form>
+					</div>
+			    </div>
+		    </div>
+		</div>
+	</div>
+	<script src="${base}/hplus/js/jquery.min.js?v=2.1.4"></script>
+    <script src="${base}/hplus/js/bootstrap.min.js?v=3.3.6"></script>
+    <script src="${base}/hplus/js/content.min.js?v=1.0.0"></script>
+     <!-- Mainly scripts -->
+    <script src="${base}/hplus/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="${base}/hplus/js/plugins/jeditable/jquery.jeditable.js"></script>
+    <!-- Data Tables -->
+    <script src="${base}/hplus/js/plugins/dataTables/jquery.dataTables.js"></script>
+    <script src="${base}/hplus/js/plugins/dataTables/dataTables.bootstrap.js"></script>
+    <!-- Page Scripts -->
+    <script src="${base}/hplus/js/pagination.js"></script>
+	<!-- chosen -->
+    <script src="${base}/hplus/js/plugins/chosen/chosen.jquery.js"></script>
+	<!-- layer -->
+    <script src="${base}/hplus/plugins/layer-v3.1.1/layer/layer.js"></script>
+    <script src="${base}/hplus/js/plugins/layer/laydate/laydate.js"></script>
+    <script src="${base}/hplus/js/jquery.form.js"></script>
+    <script src="${base}/hplus/js/common.js"></script>
+    <script src="${base}/hplus/js/jquery.ajax.js"></script>
+    
+</body>
+
+<script type="text/javascript">
+$(function(){
+	
+	var msg= "${errmsg!}"
+	if (!isNullOrEmpty(msg)){
+		layer.alert(msg, {title:'系统提示',time: 2000, icon:5});
+	}
+});
+
+
+</script>
+</html>
