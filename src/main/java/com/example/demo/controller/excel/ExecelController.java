@@ -1,7 +1,8 @@
 package com.example.demo.controller.excel;
 
 import com.example.demo.excel.ExecleExportAdminRegisterDto;
-import com.example.demo.pojo.AdminRegisterExample;
+import com.example.demo.pojo.PaycoreJnlsExample;
+import com.example.demo.service.PaycoreJnlsService;
 import com.example.demo.service.TestService;
 import com.example.demo.util.BeanCopyUtil;
 import com.example.demo.util.DateConvertUtils;
@@ -26,26 +27,29 @@ import java.util.Map;
 public class ExecelController {
 
     @Autowired
+    private PaycoreJnlsService paycoreJnlsService;
+
+    @Autowired
     private TestService testService;
 
     @GetMapping("/form_builder.do")
     public String toFormBuilder(){
-        return "view/excel_demo/excel_export";
+        return "view/excel/excel_export";
     }
 
     @GetMapping("/export.do")
     public String toExecel(){
-        return "view/excel_demo/excel_export";
+        return "view/excel/excel_export";
     }
 
     @RequestMapping(value = {"/export_demo"})
-    public void exportExcle(HttpServletResponse response, HttpServletRequest request, AdminRegisterExample dto) {
+    public void exportExcle(HttpServletResponse response, HttpServletRequest request, PaycoreJnlsExample dto) {
         try {
-            List<AdminRegisterExample> adminRegisterExampleList = testService.getAll(dto);
-            if (null!=adminRegisterExampleList && adminRegisterExampleList.size()>0){
+            List<PaycoreJnlsExample> paycoreJnlsExampleList = paycoreJnlsService.FindPaycoreJnlsListByModel(dto);
+            if (null!=paycoreJnlsExampleList && paycoreJnlsExampleList.size()>0){
 
-                Map<String, List<AdminRegisterExample>> acctBalanceJnlsList = getAcctBalanceJnlsList(adminRegisterExampleList);
-                exportExcle(acctBalanceJnlsList,response,request);
+                Map<String, List<PaycoreJnlsExample>> listMap = getAcctBalanceJnlsList(paycoreJnlsExampleList);
+                exportExcle(listMap,response,request);
             }else {
                 LoggerUtils.error(getClass(), "查询数据异常");
             }
@@ -57,7 +61,7 @@ public class ExecelController {
     }
 
     //通过数据集合导出excel数据
-    public void exportExcle(Map<String, List<AdminRegisterExample>> map , HttpServletResponse response, HttpServletRequest request) {
+    public void exportExcle(Map<String, List<PaycoreJnlsExample>> map , HttpServletResponse response, HttpServletRequest request) {
         int index = 0;
         List[] arrList = new List[map.size()];
         String[] str = new String[map.size()];
@@ -84,20 +88,20 @@ public class ExecelController {
         }
     }
 
-    public Map<String,List<AdminRegisterExample>> getAcctBalanceJnlsList(List<AdminRegisterExample> xxOrderDtoList){
-        Map<String,List<AdminRegisterExample>> map=new HashMap<String, List<AdminRegisterExample>>();
+    public Map<String,List<PaycoreJnlsExample>> getAcctBalanceJnlsList(List<PaycoreJnlsExample> paycoreJnlsExampleList){
+        Map<String,List<PaycoreJnlsExample>> map=new HashMap<String, List<PaycoreJnlsExample>>();
         //根据日期获取个人用户余额流水
         String keyName = DateConvertUtils.formatYYYYMMDD(new Date());
 
-        if (null!=xxOrderDtoList&&xxOrderDtoList.size()>0){
+        if (null!=paycoreJnlsExampleList&&paycoreJnlsExampleList.size()>0){
 
-            map.put("交易流水_"+keyName,xxOrderDtoList);
+            map.put("流水_"+keyName,paycoreJnlsExampleList);
         }
         return map;
     }
 
     //将现有数据转化为最终导入Execl表的数据
-    private List<ExecleExportAdminRegisterDto> getExeclData(List<AdminRegisterExample> adminRegisterExampleList) {
-        return BeanCopyUtil.copyTo(adminRegisterExampleList, ExecleExportAdminRegisterDto.class);
+    private List<ExecleExportAdminRegisterDto> getExeclData(List<PaycoreJnlsExample> paycoreJnlsExampleList) {
+        return BeanCopyUtil.copyTo(paycoreJnlsExampleList, ExecleExportAdminRegisterDto.class);
     }
 }

@@ -48,18 +48,6 @@
 									<input class="form-control input-sm" type="tel" name="agentNo" value="<#if dto??>${dto.agentNo!}</#if>" onkeyup="value=value.replace(/[^\d.]/g,'')" maxlength="32" onbeforepaste="value=value.replace(/[^\d.]/g,'')"  placeholder="代理商编号"/>
 								</div>
 							</div>
-							<div class="clearfix" style="margin-bottom: 10px;"></div><!-- 清除浮动 -->
-							<div class="row">
-								<label class="col-sm-2 control-label">导出类型：</label>
-								<div class="input-group">
-									<select name="link" data-placeholder="请选导出类型" class="chzn-select-noSearch" style="width:120px;">
-										<#if role?? && role == '4'>
-											<option value="2" <#if dto.link ?? && dto.link == '2'>selected</#if> >个人流水导出</option>
-										</#if>
-										<option value="1" <#if dto.link ?? && dto.link == '1'>selected</#if> >下级流水导出</option>
-								</select>
-							</div>
-							</div>
                         	<div class="clearfix" style="margin-bottom: 10px;"></div><!-- 清除浮动 -->
                         	<div class="row">
                         		<div class="col-sm-2 col-sm-offset-1">

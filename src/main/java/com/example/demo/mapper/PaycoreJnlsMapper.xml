@@ -1,0 +1,575 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.PaycoreJnlsMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.pojo.PaycoreJnls">
+    <id column="ORG_NO" jdbcType="VARCHAR" property="orgNo" />
+    <id column="PAY_NO" jdbcType="VARCHAR" property="payNo" />
+    <result column="PAY_METHOD" jdbcType="VARCHAR" property="payMethod" />
+    <result column="MERCHANT_NO" jdbcType="VARCHAR" property="merchantNo" />
+    <result column="TERMINAL_NO" jdbcType="VARCHAR" property="terminalNo" />
+    <result column="AMOUNT" jdbcType="VARCHAR" property="amount" />
+    <result column="NOTIFY_URL" jdbcType="VARCHAR" property="notifyUrl" />
+    <result column="DESCRIPT" jdbcType="VARCHAR" property="descript" />
+    <result column="MID" jdbcType="VARCHAR" property="mid" />
+    <result column="TMSTAMP" jdbcType="VARCHAR" property="tmstamp" />
+    <result column="R_TMSTAMP" jdbcType="VARCHAR" property="rTmstamp" />
+    <result column="N_TMSTAMP" jdbcType="VARCHAR" property="nTmstamp" />
+    <result column="INSTITUTE" jdbcType="VARCHAR" property="institute" />
+    <result column="PJNL" jdbcType="VARCHAR" property="pjnl" />
+    <result column="BJNL" jdbcType="VARCHAR" property="bjnl" />
+    <result column="REPLY_CODE" jdbcType="VARCHAR" property="replyCode" />
+    <result column="REPLY_MESSAGE" jdbcType="VARCHAR" property="replyMessage" />
+    <result column="TRADE_STATUS" jdbcType="VARCHAR" property="tradeStatus" />
+    <result column="REMAIN1" jdbcType="VARCHAR" property="remain1" />
+    <result column="REMAIN2" jdbcType="VARCHAR" property="remain2" />
+    <result column="REMAIN3" jdbcType="VARCHAR" property="remain3" />
+    <result column="REQUEST_DATE" jdbcType="VARCHAR" property="requestDate" />
+    <result column="REQUEST_TIME" jdbcType="VARCHAR" property="requestTime" />
+    <result column="RESPONSE_DATE" jdbcType="VARCHAR" property="responseDate" />
+    <result column="RESPONSE_TIME" jdbcType="VARCHAR" property="responseTime" />
+    <result column="FLAG" jdbcType="VARCHAR" property="flag" />
+    <result column="CHANNEL" jdbcType="VARCHAR" property="channel" />
+    <result column="ORIG_PJNL" jdbcType="VARCHAR" property="origPjnl" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    ORG_NO, PAY_NO, PAY_METHOD, MERCHANT_NO, TERMINAL_NO, AMOUNT, NOTIFY_URL, DESCRIPT, 
+    MID, TMSTAMP, R_TMSTAMP, N_TMSTAMP, INSTITUTE, PJNL, BJNL, REPLY_CODE, REPLY_MESSAGE, 
+    TRADE_STATUS, REMAIN1, REMAIN2, REMAIN3, REQUEST_DATE, REQUEST_TIME, RESPONSE_DATE, 
+    RESPONSE_TIME, FLAG, CHANNEL, ORIG_PJNL
+  </sql>
+  <select id="selectByExample" parameterType="com.example.demo.pojo.PaycoreJnlsExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from pay_paycore_jnls
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="com.example.demo.pojo.PaycoreJnlsKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from pay_paycore_jnls
+    where ORG_NO = #{orgNo,jdbcType=VARCHAR}
+      and PAY_NO = #{payNo,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.example.demo.pojo.PaycoreJnlsKey">
+    delete from pay_paycore_jnls
+    where ORG_NO = #{orgNo,jdbcType=VARCHAR}
+      and PAY_NO = #{payNo,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.example.demo.pojo.PaycoreJnlsExample">
+    delete from pay_paycore_jnls
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.pojo.PaycoreJnls">
+    insert into pay_paycore_jnls (ORG_NO, PAY_NO, PAY_METHOD, 
+      MERCHANT_NO, TERMINAL_NO, AMOUNT, 
+      NOTIFY_URL, DESCRIPT, MID, 
+      TMSTAMP, R_TMSTAMP, N_TMSTAMP, 
+      INSTITUTE, PJNL, BJNL, 
+      REPLY_CODE, REPLY_MESSAGE, TRADE_STATUS, 
+      REMAIN1, REMAIN2, REMAIN3, 
+      REQUEST_DATE, REQUEST_TIME, RESPONSE_DATE, 
+      RESPONSE_TIME, FLAG, CHANNEL, 
+      ORIG_PJNL)
+    values (#{orgNo,jdbcType=VARCHAR}, #{payNo,jdbcType=VARCHAR}, #{payMethod,jdbcType=VARCHAR}, 
+      #{merchantNo,jdbcType=VARCHAR}, #{terminalNo,jdbcType=VARCHAR}, #{amount,jdbcType=VARCHAR}, 
+      #{notifyUrl,jdbcType=VARCHAR}, #{descript,jdbcType=VARCHAR}, #{mid,jdbcType=VARCHAR}, 
+      #{tmstamp,jdbcType=VARCHAR}, #{rTmstamp,jdbcType=VARCHAR}, #{nTmstamp,jdbcType=VARCHAR}, 
+      #{institute,jdbcType=VARCHAR}, #{pjnl,jdbcType=VARCHAR}, #{bjnl,jdbcType=VARCHAR}, 
+      #{replyCode,jdbcType=VARCHAR}, #{replyMessage,jdbcType=VARCHAR}, #{tradeStatus,jdbcType=VARCHAR}, 
+      #{remain1,jdbcType=VARCHAR}, #{remain2,jdbcType=VARCHAR}, #{remain3,jdbcType=VARCHAR}, 
+      #{requestDate,jdbcType=VARCHAR}, #{requestTime,jdbcType=VARCHAR}, #{responseDate,jdbcType=VARCHAR}, 
+      #{responseTime,jdbcType=VARCHAR}, #{flag,jdbcType=VARCHAR}, #{channel,jdbcType=VARCHAR}, 
+      #{origPjnl,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.pojo.PaycoreJnls">
+    insert into pay_paycore_jnls
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orgNo != null">
+        ORG_NO,
+      </if>
+      <if test="payNo != null">
+        PAY_NO,
+      </if>
+      <if test="payMethod != null">
+        PAY_METHOD,
+      </if>
+      <if test="merchantNo != null">
+        MERCHANT_NO,
+      </if>
+      <if test="terminalNo != null">
+        TERMINAL_NO,
+      </if>
+      <if test="amount != null">
+        AMOUNT,
+      </if>
+      <if test="notifyUrl != null">
+        NOTIFY_URL,
+      </if>
+      <if test="descript != null">
+        DESCRIPT,
+      </if>
+      <if test="mid != null">
+        MID,
+      </if>
+      <if test="tmstamp != null">
+        TMSTAMP,
+      </if>
+      <if test="rTmstamp != null">
+        R_TMSTAMP,
+      </if>
+      <if test="nTmstamp != null">
+        N_TMSTAMP,
+      </if>
+      <if test="institute != null">
+        INSTITUTE,
+      </if>
+      <if test="pjnl != null">
+        PJNL,
+      </if>
+      <if test="bjnl != null">
+        BJNL,
+      </if>
+      <if test="replyCode != null">
+        REPLY_CODE,
+      </if>
+      <if test="replyMessage != null">
+        REPLY_MESSAGE,
+      </if>
+      <if test="tradeStatus != null">
+        TRADE_STATUS,
+      </if>
+      <if test="remain1 != null">
+        REMAIN1,
+      </if>
+      <if test="remain2 != null">
+        REMAIN2,
+      </if>
+      <if test="remain3 != null">
+        REMAIN3,
+      </if>
+      <if test="requestDate != null">
+        REQUEST_DATE,
+      </if>
+      <if test="requestTime != null">
+        REQUEST_TIME,
+      </if>
+      <if test="responseDate != null">
+        RESPONSE_DATE,
+      </if>
+      <if test="responseTime != null">
+        RESPONSE_TIME,
+      </if>
+      <if test="flag != null">
+        FLAG,
+      </if>
+      <if test="channel != null">
+        CHANNEL,
+      </if>
+      <if test="origPjnl != null">
+        ORIG_PJNL,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orgNo != null">
+        #{orgNo,jdbcType=VARCHAR},
+      </if>
+      <if test="payNo != null">
+        #{payNo,jdbcType=VARCHAR},
+      </if>
+      <if test="payMethod != null">
+        #{payMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantNo != null">
+        #{merchantNo,jdbcType=VARCHAR},
+      </if>
+      <if test="terminalNo != null">
+        #{terminalNo,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=VARCHAR},
+      </if>
+      <if test="notifyUrl != null">
+        #{notifyUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="descript != null">
+        #{descript,jdbcType=VARCHAR},
+      </if>
+      <if test="mid != null">
+        #{mid,jdbcType=VARCHAR},
+      </if>
+      <if test="tmstamp != null">
+        #{tmstamp,jdbcType=VARCHAR},
+      </if>
+      <if test="rTmstamp != null">
+        #{rTmstamp,jdbcType=VARCHAR},
+      </if>
+      <if test="nTmstamp != null">
+        #{nTmstamp,jdbcType=VARCHAR},
+      </if>
+      <if test="institute != null">
+        #{institute,jdbcType=VARCHAR},
+      </if>
+      <if test="pjnl != null">
+        #{pjnl,jdbcType=VARCHAR},
+      </if>
+      <if test="bjnl != null">
+        #{bjnl,jdbcType=VARCHAR},
+      </if>
+      <if test="replyCode != null">
+        #{replyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="replyMessage != null">
+        #{replyMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeStatus != null">
+        #{tradeStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="remain1 != null">
+        #{remain1,jdbcType=VARCHAR},
+      </if>
+      <if test="remain2 != null">
+        #{remain2,jdbcType=VARCHAR},
+      </if>
+      <if test="remain3 != null">
+        #{remain3,jdbcType=VARCHAR},
+      </if>
+      <if test="requestDate != null">
+        #{requestDate,jdbcType=VARCHAR},
+      </if>
+      <if test="requestTime != null">
+        #{requestTime,jdbcType=VARCHAR},
+      </if>
+      <if test="responseDate != null">
+        #{responseDate,jdbcType=VARCHAR},
+      </if>
+      <if test="responseTime != null">
+        #{responseTime,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null">
+        #{flag,jdbcType=VARCHAR},
+      </if>
+      <if test="channel != null">
+        #{channel,jdbcType=VARCHAR},
+      </if>
+      <if test="origPjnl != null">
+        #{origPjnl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.example.demo.pojo.PaycoreJnlsExample" resultType="java.lang.Long">
+    select count(*) from pay_paycore_jnls
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update pay_paycore_jnls
+    <set>
+      <if test="record.orgNo != null">
+        ORG_NO = #{record.orgNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.payNo != null">
+        PAY_NO = #{record.payNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.payMethod != null">
+        PAY_METHOD = #{record.payMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="record.merchantNo != null">
+        MERCHANT_NO = #{record.merchantNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.terminalNo != null">
+        TERMINAL_NO = #{record.terminalNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.amount != null">
+        AMOUNT = #{record.amount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.notifyUrl != null">
+        NOTIFY_URL = #{record.notifyUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.descript != null">
+        DESCRIPT = #{record.descript,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mid != null">
+        MID = #{record.mid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tmstamp != null">
+        TMSTAMP = #{record.tmstamp,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rTmstamp != null">
+        R_TMSTAMP = #{record.rTmstamp,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nTmstamp != null">
+        N_TMSTAMP = #{record.nTmstamp,jdbcType=VARCHAR},
+      </if>
+      <if test="record.institute != null">
+        INSTITUTE = #{record.institute,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pjnl != null">
+        PJNL = #{record.pjnl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bjnl != null">
+        BJNL = #{record.bjnl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.replyCode != null">
+        REPLY_CODE = #{record.replyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.replyMessage != null">
+        REPLY_MESSAGE = #{record.replyMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tradeStatus != null">
+        TRADE_STATUS = #{record.tradeStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remain1 != null">
+        REMAIN1 = #{record.remain1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remain2 != null">
+        REMAIN2 = #{record.remain2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remain3 != null">
+        REMAIN3 = #{record.remain3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.requestDate != null">
+        REQUEST_DATE = #{record.requestDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.requestTime != null">
+        REQUEST_TIME = #{record.requestTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.responseDate != null">
+        RESPONSE_DATE = #{record.responseDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.responseTime != null">
+        RESPONSE_TIME = #{record.responseTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.flag != null">
+        FLAG = #{record.flag,jdbcType=VARCHAR},
+      </if>
+      <if test="record.channel != null">
+        CHANNEL = #{record.channel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.origPjnl != null">
+        ORIG_PJNL = #{record.origPjnl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update pay_paycore_jnls
+    set ORG_NO = #{record.orgNo,jdbcType=VARCHAR},
+      PAY_NO = #{record.payNo,jdbcType=VARCHAR},
+      PAY_METHOD = #{record.payMethod,jdbcType=VARCHAR},
+      MERCHANT_NO = #{record.merchantNo,jdbcType=VARCHAR},
+      TERMINAL_NO = #{record.terminalNo,jdbcType=VARCHAR},
+      AMOUNT = #{record.amount,jdbcType=VARCHAR},
+      NOTIFY_URL = #{record.notifyUrl,jdbcType=VARCHAR},
+      DESCRIPT = #{record.descript,jdbcType=VARCHAR},
+      MID = #{record.mid,jdbcType=VARCHAR},
+      TMSTAMP = #{record.tmstamp,jdbcType=VARCHAR},
+      R_TMSTAMP = #{record.rTmstamp,jdbcType=VARCHAR},
+      N_TMSTAMP = #{record.nTmstamp,jdbcType=VARCHAR},
+      INSTITUTE = #{record.institute,jdbcType=VARCHAR},
+      PJNL = #{record.pjnl,jdbcType=VARCHAR},
+      BJNL = #{record.bjnl,jdbcType=VARCHAR},
+      REPLY_CODE = #{record.replyCode,jdbcType=VARCHAR},
+      REPLY_MESSAGE = #{record.replyMessage,jdbcType=VARCHAR},
+      TRADE_STATUS = #{record.tradeStatus,jdbcType=VARCHAR},
+      REMAIN1 = #{record.remain1,jdbcType=VARCHAR},
+      REMAIN2 = #{record.remain2,jdbcType=VARCHAR},
+      REMAIN3 = #{record.remain3,jdbcType=VARCHAR},
+      REQUEST_DATE = #{record.requestDate,jdbcType=VARCHAR},
+      REQUEST_TIME = #{record.requestTime,jdbcType=VARCHAR},
+      RESPONSE_DATE = #{record.responseDate,jdbcType=VARCHAR},
+      RESPONSE_TIME = #{record.responseTime,jdbcType=VARCHAR},
+      FLAG = #{record.flag,jdbcType=VARCHAR},
+      CHANNEL = #{record.channel,jdbcType=VARCHAR},
+      ORIG_PJNL = #{record.origPjnl,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.pojo.PaycoreJnls">
+    update pay_paycore_jnls
+    <set>
+      <if test="payMethod != null">
+        PAY_METHOD = #{payMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantNo != null">
+        MERCHANT_NO = #{merchantNo,jdbcType=VARCHAR},
+      </if>
+      <if test="terminalNo != null">
+        TERMINAL_NO = #{terminalNo,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        AMOUNT = #{amount,jdbcType=VARCHAR},
+      </if>
+      <if test="notifyUrl != null">
+        NOTIFY_URL = #{notifyUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="descript != null">
+        DESCRIPT = #{descript,jdbcType=VARCHAR},
+      </if>
+      <if test="mid != null">
+        MID = #{mid,jdbcType=VARCHAR},
+      </if>
+      <if test="tmstamp != null">
+        TMSTAMP = #{tmstamp,jdbcType=VARCHAR},
+      </if>
+      <if test="rTmstamp != null">
+        R_TMSTAMP = #{rTmstamp,jdbcType=VARCHAR},
+      </if>
+      <if test="nTmstamp != null">
+        N_TMSTAMP = #{nTmstamp,jdbcType=VARCHAR},
+      </if>
+      <if test="institute != null">
+        INSTITUTE = #{institute,jdbcType=VARCHAR},
+      </if>
+      <if test="pjnl != null">
+        PJNL = #{pjnl,jdbcType=VARCHAR},
+      </if>
+      <if test="bjnl != null">
+        BJNL = #{bjnl,jdbcType=VARCHAR},
+      </if>
+      <if test="replyCode != null">
+        REPLY_CODE = #{replyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="replyMessage != null">
+        REPLY_MESSAGE = #{replyMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeStatus != null">
+        TRADE_STATUS = #{tradeStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="remain1 != null">
+        REMAIN1 = #{remain1,jdbcType=VARCHAR},
+      </if>
+      <if test="remain2 != null">
+        REMAIN2 = #{remain2,jdbcType=VARCHAR},
+      </if>
+      <if test="remain3 != null">
+        REMAIN3 = #{remain3,jdbcType=VARCHAR},
+      </if>
+      <if test="requestDate != null">
+        REQUEST_DATE = #{requestDate,jdbcType=VARCHAR},
+      </if>
+      <if test="requestTime != null">
+        REQUEST_TIME = #{requestTime,jdbcType=VARCHAR},
+      </if>
+      <if test="responseDate != null">
+        RESPONSE_DATE = #{responseDate,jdbcType=VARCHAR},
+      </if>
+      <if test="responseTime != null">
+        RESPONSE_TIME = #{responseTime,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null">
+        FLAG = #{flag,jdbcType=VARCHAR},
+      </if>
+      <if test="channel != null">
+        CHANNEL = #{channel,jdbcType=VARCHAR},
+      </if>
+      <if test="origPjnl != null">
+        ORIG_PJNL = #{origPjnl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ORG_NO = #{orgNo,jdbcType=VARCHAR}
+      and PAY_NO = #{payNo,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.pojo.PaycoreJnls">
+    update pay_paycore_jnls
+    set PAY_METHOD = #{payMethod,jdbcType=VARCHAR},
+      MERCHANT_NO = #{merchantNo,jdbcType=VARCHAR},
+      TERMINAL_NO = #{terminalNo,jdbcType=VARCHAR},
+      AMOUNT = #{amount,jdbcType=VARCHAR},
+      NOTIFY_URL = #{notifyUrl,jdbcType=VARCHAR},
+      DESCRIPT = #{descript,jdbcType=VARCHAR},
+      MID = #{mid,jdbcType=VARCHAR},
+      TMSTAMP = #{tmstamp,jdbcType=VARCHAR},
+      R_TMSTAMP = #{rTmstamp,jdbcType=VARCHAR},
+      N_TMSTAMP = #{nTmstamp,jdbcType=VARCHAR},
+      INSTITUTE = #{institute,jdbcType=VARCHAR},
+      PJNL = #{pjnl,jdbcType=VARCHAR},
+      BJNL = #{bjnl,jdbcType=VARCHAR},
+      REPLY_CODE = #{replyCode,jdbcType=VARCHAR},
+      REPLY_MESSAGE = #{replyMessage,jdbcType=VARCHAR},
+      TRADE_STATUS = #{tradeStatus,jdbcType=VARCHAR},
+      REMAIN1 = #{remain1,jdbcType=VARCHAR},
+      REMAIN2 = #{remain2,jdbcType=VARCHAR},
+      REMAIN3 = #{remain3,jdbcType=VARCHAR},
+      REQUEST_DATE = #{requestDate,jdbcType=VARCHAR},
+      REQUEST_TIME = #{requestTime,jdbcType=VARCHAR},
+      RESPONSE_DATE = #{responseDate,jdbcType=VARCHAR},
+      RESPONSE_TIME = #{responseTime,jdbcType=VARCHAR},
+      FLAG = #{flag,jdbcType=VARCHAR},
+      CHANNEL = #{channel,jdbcType=VARCHAR},
+      ORIG_PJNL = #{origPjnl,jdbcType=VARCHAR}
+    where ORG_NO = #{orgNo,jdbcType=VARCHAR}
+      and PAY_NO = #{payNo,jdbcType=VARCHAR}
+  </update>
+</mapper>
