@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.dto.PaycoreJnlsDto;
 import com.example.demo.mapper.PaycoreJnlsMapper;
 import com.example.demo.pojo.PaycoreJnlsExample;
 import com.example.demo.util.BeanCopyUtil;
@@ -15,7 +16,7 @@ public class PaycoreJnlsServiceImpl implements PaycoreJnlsService{
     PaycoreJnlsMapper paycoreJnlsMapper;
 
     @Override
-    public List<PaycoreJnlsExample> FindPaycoreJnlsListByModel(PaycoreJnlsExample paycoreJnlsExample) {
-        return BeanCopyUtil.copyTo(paycoreJnlsMapper.selectByExample(paycoreJnlsExample),PaycoreJnlsExample.class) ;
+    public List<PaycoreJnlsDto> FindPaycoreJnlsListByModel(PaycoreJnlsExample paycoreJnlsExample) {
+        return BeanCopyUtil.copyTo(paycoreJnlsMapper.selectByExample(paycoreJnlsExample),PaycoreJnlsDto.class) ;
     }
 }

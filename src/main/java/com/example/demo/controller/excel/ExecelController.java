@@ -1,5 +1,6 @@
 package com.example.demo.controller.excel;
 
+import com.example.demo.dto.PaycoreJnlsDto;
 import com.example.demo.excel.ExecleExportAdminRegisterDto;
 import com.example.demo.pojo.PaycoreJnlsExample;
 import com.example.demo.service.PaycoreJnlsService;
@@ -45,10 +46,10 @@ public class ExecelController {
     @RequestMapping(value = {"/export_demo"})
     public void exportExcle(HttpServletResponse response, HttpServletRequest request, PaycoreJnlsExample dto) {
         try {
-            List<PaycoreJnlsExample> paycoreJnlsExampleList = paycoreJnlsService.FindPaycoreJnlsListByModel(dto);
-            if (null!=paycoreJnlsExampleList && paycoreJnlsExampleList.size()>0){
+            List<PaycoreJnlsDto> paycoreJnlsDtoList = paycoreJnlsService.FindPaycoreJnlsListByModel(dto);
+            if (null!=paycoreJnlsDtoList && paycoreJnlsDtoList.size()>0){
 
-                Map<String, List<PaycoreJnlsExample>> listMap = getAcctBalanceJnlsList(paycoreJnlsExampleList);
+                Map<String, List<PaycoreJnlsDto>> listMap = getAcctBalanceJnlsList(paycoreJnlsDtoList);
                 exportExcle(listMap,response,request);
             }else {
                 LoggerUtils.error(getClass(), "查询数据异常");
@@ -61,7 +62,7 @@ public class ExecelController {
     }
 
     //通过数据集合导出excel数据
-    public void exportExcle(Map<String, List<PaycoreJnlsExample>> map , HttpServletResponse response, HttpServletRequest request) {
+    public void exportExcle(Map<String, List<PaycoreJnlsDto>> map , HttpServletResponse response, HttpServletRequest request) {
         int index = 0;
         List[] arrList = new List[map.size()];
         String[] str = new String[map.size()];
@@ -88,8 +89,8 @@ public class ExecelController {
         }
     }
 
-    public Map<String,List<PaycoreJnlsExample>> getAcctBalanceJnlsList(List<PaycoreJnlsExample> paycoreJnlsExampleList){
-        Map<String,List<PaycoreJnlsExample>> map=new HashMap<String, List<PaycoreJnlsExample>>();
+    public Map<String,List<PaycoreJnlsDto>> getAcctBalanceJnlsList(List<PaycoreJnlsDto> paycoreJnlsExampleList){
+        Map<String,List<PaycoreJnlsDto>> map=new HashMap<String, List<PaycoreJnlsDto>>();
         //根据日期获取个人用户余额流水
         String keyName = DateConvertUtils.formatYYYYMMDD(new Date());
 
@@ -101,7 +102,7 @@ public class ExecelController {
     }
 
     //将现有数据转化为最终导入Execl表的数据
-    private List<ExecleExportAdminRegisterDto> getExeclData(List<PaycoreJnlsExample> paycoreJnlsExampleList) {
+    private List<ExecleExportAdminRegisterDto> getExeclData(List<PaycoreJnlsDto> paycoreJnlsExampleList) {
         return BeanCopyUtil.copyTo(paycoreJnlsExampleList, ExecleExportAdminRegisterDto.class);
     }
 }

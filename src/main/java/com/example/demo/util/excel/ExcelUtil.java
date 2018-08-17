@@ -161,7 +161,6 @@ public class ExcelUtil<T> {
             response.setContentType("application/vnd.ms-excel; charset=utf-8");
             response.setHeader("Content-disposition", "attachment;filename=" + new String(fileName.getBytes("gbk"), "iso8859-1")+".xls");
             this.exportExcel(lists, sheetNames, response.getOutputStream());
-            LoggerUtils.info(getClass(),"<<<<<222>>>>>");
         }
         catch (Exception e) {
             LoggerUtils.error(getClass(), "exportExcel error", e);
