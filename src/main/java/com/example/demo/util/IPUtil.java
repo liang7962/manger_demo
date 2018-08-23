@@ -156,15 +156,19 @@ public class IPUtil {
         return tempStr;
     }
 
-/*    public static void main(String[] args) {
+    public static void main(String[] args) {
 
+        long aa=2147483647232l;
+        long bb=21474836472322l;
+        long cc=bb-aa;
+        System.out.print(cc);
 
-        String context = call("http://ip.taobao.com/service/getIpInfo.php?ip=120.192.182.1");
+       /* String context = call("http://ip.taobao.com/service/getIpInfo.php?ip=120.192.182.1");
 
         JSONObject fromObject = JSONObject.fromObject(context);
         JSONObject jsonObject = fromObject.getJSONObject("data");
         System.out.println(fromObject);
-        System.err.println(jsonObject.get("city"));
-    }*/
+        System.err.println(jsonObject.get("city"));*/
+    }
 
 }
