@@ -14,6 +14,7 @@ import com.example.demo.util.LoggerUtils;
 import com.example.demo.util.excel.ExcelUtil;
 import com.example.demo.util.excel.ImportListExcleUtil;
 import net.sf.json.JSON;
+import net.sf.json.JSONObject;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -125,21 +126,23 @@ public class ExecelController {
         String msg=null;
         try {
             Map<String, List> listMap= new ImportListExcleUtil().getExcelInfo(file);
-            StringBuffer stringBuffer=new StringBuffer();
             List<String> list=new ArrayList<>();
+     /*       List list2=new ArrayList<>();
+            listMap.forEach((k,v)->{
+                List v1 = v;
+
+            });*/
             for (Map.Entry<String,List> entry: listMap.entrySet()) {
                 //map.keySet()返回的是所有key的值
-//               ;//得到每个key多对用value的值
                 list= entry.getValue();
-                for (int i=0;i<list.size();i++) {
-                    stringBuffer.append(list.get(i)+",");
-                }
+
+                msg="01";
             }
         }catch (Exception e){
             LoggerUtils.info(getClass(),"导入excel失败>>>>>>>>>>>>>>>>>"+e);
         }
 
-        return "01";
+        return msg;
     }
 
     @RequestMapping(value = {"/export_list"})

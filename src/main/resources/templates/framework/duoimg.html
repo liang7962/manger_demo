@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<#assign base="${springMacroRequestContext.contextPath}"/>
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+      <form id="houseApply" action="${base}/houseform" method="post">
+      	  <p class="generalDescription">上传房产证前4张照片（不包括封面），可快速获得贷款额度并优先处理贷款申请。</p>
+      	    <div class="photosUpload">
+                <div class="photo-piece">
+                    <input id="name" name="name" type="text" value="" class="requires"/>
+                    <span class="photo-piece-name">name</span>
+                  </div>
+      	      <div class="photo-piece">
+      	        <input onclick="localImg(this)" type="file" id="permitP1" name="" accept= "${base}/front/image/*">
+      	        <img src="${base}/front/images/btn-upload.jpg">
+      	        <input id="permitP1" name="permitP1" type="hidden" value="" class="requires"/>
+      	        <span class="photo-piece-name">房产证第一页</span>
+      	      </div>
+      	      <div class="photo-piece">
+      	        <input onclick="localImg(this)" id="permitP2" type="file" name="" accept= "${base}/front/image/*">
+      	        <img src="${base}/front/images/btn-upload.jpg">
+      	        <input id="permitP2" name="permitP2" type="hidden" value="" class="requires"/>
+      	        <span class="photo-piece-name">房产证第二页</span>
+      	      </div>
+      	      <div class="photo-piece">
+      	        <input onclick="localImg(this)"  id="permitP3" type="file" name="" accept= "${base}/front/image/*">
+      	        <img src="${base}/front/images/btn-upload.jpg">
+      	        <input id="permitP3" name="permitP3" type="hidden" value="" class="requires"/>
+      	        <span class="photo-piece-name">房产证第三页</span>
+      	      </div>
+      	      <div class="photo-piece">
+      	        <input onclick="localImg(this)"  id="permitP4" type="file" name="" accept= "${base}/front/image/*">
+      	        <img src="${base}/front/images/btn-upload.jpg">
+      	        <input id="permitP4" name="permitP4" type="hidden" value=""  class="requires"/>
+      	        <span class="photo-piece-name">房产证第四页</span>
+      	      </div>
+      	    </div>
+      	    <p class="generalDescription">注：请确保照片清晰，并上传5M以内，JPG、JPEG、PNG、BMP格式照片。</p>
+      	    <button type="button" class="yiAn_back_btn unable"  id="uploadHousePhoto" style="margin-top: 20px;" onclick="validateForm()">
+      	    	提交
+      	    </button>
+      	    <input type="submit">
+      	    <div class="applyHint">*递交申请后，客户经理将会尽快与您取得联系</div>
+        </form>
+</body>
+<script src="${base}/hplus/js/jquery.min.js"></script>
+<script src="${base}/hplus/js/LocalResizeIMG.js"></script>
+<!--   mobileBUGFix.js 兼容修复移动设备       -->
+<script src="${base}/hplus/js/mobileBUGFix.mini.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+     function validateForm() {
+                var form1=document.getElementById("houseApply");
+                var formData=new FormData(form1);
+        		formData.append("myfile1",$("#permitP1")[0].files[0]);
+        		formData.append("myfile2",$("#permitP2")[0].files[0]);
+        		formData.append("myfile3",$("#permitP3")[0].files[0]);
+        		formData.append("myfile4",$("#permitP4")[0].files[0]);
+        		 $.ajax({
+                            url : "${base}/houseform",
+                            type : "POST",
+                            data : formData,
+                            async : false,
+                            cache : false,
+                            contentType : false,
+                            processData : false,
+                            success : function(data) {
+                              alert("s");
+                            },
+                            error : function(e) {
+                               alert("f")
+                            }
+                        });
+    }
+
+</script>
+</html>
