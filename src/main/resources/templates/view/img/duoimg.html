@@ -40,6 +40,13 @@
       	    </button>
       	    <div class="applyHint">*递交申请后，客户经理将会尽快与您取得联系</div>
         </form>
+        <div>
+         <input type="file" id="picture" name="picture"/>
+        </div>
+        <div>
+            <img alt="图片预览" src="" id="showHeadImg">
+        </div>
+
 </body>
 <script src="${base}/hplus/js/jquery.min.js"></script>
 <script src="${base}/hplus/js/LocalResizeIMG.js"></script>
@@ -48,28 +55,42 @@
 <script type="text/javascript">
 
      function validateForm() {
-                var form1=document.getElementById("houseApply");
-                var formData=new FormData(form1);
-        		formData.append("img",$("#permitP1")[0].files[0]);
-        		formData.append("img",$("#permitP2")[0].files[0]);
-        		formData.append("img",$("#permitP3")[0].files[0]);
-        		formData.append("img",$("#permitP4")[0].files[0]);
-        		 $.ajax({
-                            url : "${base}/img/houseform",
-                            type : "POST",
-                            data : formData,
-                            async : false,
-                            cache : false,
-                            contentType : false,
-                            processData : false,
-                            success : function(data) {
-                              alert("s");
-                            },
-                            error : function(e) {
-                               alert("f")
-                            }
-                        });
+        var form1=document.getElementById("houseApply");
+        var formData=new FormData(form1);
+        formData.append("img",$("#permitP1")[0].files[0]);
+        formData.append("img",$("#permitP2")[0].files[0]);
+        formData.append("img",$("#permitP3")[0].files[0]);
+        formData.append("img",$("#permitP4")[0].files[0]);
+         $.ajax({
+                url : "${base}/img/houseform",
+                type : "POST",
+                data : formData,
+                async : false,
+                cache : false,
+                contentType : false,
+                processData : false,
+                success : function() {
+                  alert("s");
+                },
+                error : function() {
+                   alert("f")
+                }
+            });
     }
+    $(function(){
+        $("#picture").bind("change",function() {
+            var url = null;
+            if (window.createObjectURL != undefined) {
+                url = window.createObjectURL(this.files[0]);
+            } else if (window.URL != undefined) {
+                url = window.URL.createObjectURL(this.files[0]);
+            } else if (window.webkitURL != undefined) {
+                url = window.webkitURL.createObjectURL(this.files[0]);
+            }
+            console.log(this.files[0]);
+            $("#showHeadImg").attr("src",url);
+        });
+    });
 
 </script>
 </html>

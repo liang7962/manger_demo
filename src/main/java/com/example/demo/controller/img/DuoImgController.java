@@ -4,6 +4,7 @@ import com.example.demo.util.LoggerUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -29,6 +30,7 @@ public class DuoImgController {
      * @param
      **/
     @RequestMapping(value = "/houseform")
+    @ResponseBody
     public String houseLoanImgForm(HttpServletRequest request, HttpServletResponse response, @RequestParam(value="myfile1") MultipartFile file,
                                     @RequestParam(value="myfile2") MultipartFile file2, @RequestParam(value="myfile3") MultipartFile file3,
                                     @RequestParam(value="myfile4") MultipartFile file4, @RequestParam(value="name")String name
