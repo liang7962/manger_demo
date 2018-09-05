@@ -6,13 +6,9 @@
   <title>Title</title>
 </head>
 <body>
-      <form id="houseApply" action="${base}/houseform" method="post">
+      <form id="houseApply" action="${base}/img/houseform" method="post">
       	  <p class="generalDescription">上传房产证前4张照片（不包括封面），可快速获得贷款额度并优先处理贷款申请。</p>
       	    <div class="photosUpload">
-                <div class="photo-piece">
-                    <input id="name" name="name" type="text" value="" class="requires"/>
-                    <span class="photo-piece-name">name</span>
-                  </div>
       	      <div class="photo-piece">
       	        <input onclick="localImg(this)" type="file" id="permitP1" name="" accept= "${base}/front/image/*">
       	        <img src="${base}/front/images/btn-upload.jpg">
@@ -42,7 +38,6 @@
       	    <button type="button" class="yiAn_back_btn unable"  id="uploadHousePhoto" style="margin-top: 20px;" onclick="validateForm()">
       	    	提交
       	    </button>
-      	    <input type="submit">
       	    <div class="applyHint">*递交申请后，客户经理将会尽快与您取得联系</div>
         </form>
 </body>
@@ -55,12 +50,12 @@
      function validateForm() {
                 var form1=document.getElementById("houseApply");
                 var formData=new FormData(form1);
-        		formData.append("myfile1",$("#permitP1")[0].files[0]);
-        		formData.append("myfile2",$("#permitP2")[0].files[0]);
-        		formData.append("myfile3",$("#permitP3")[0].files[0]);
-        		formData.append("myfile4",$("#permitP4")[0].files[0]);
+        		formData.append("img",$("#permitP1")[0].files[0]);
+        		formData.append("img",$("#permitP2")[0].files[0]);
+        		formData.append("img",$("#permitP3")[0].files[0]);
+        		formData.append("img",$("#permitP4")[0].files[0]);
         		 $.ajax({
-                            url : "${base}/houseform",
+                            url : "${base}/img/houseform",
                             type : "POST",
                             data : formData,
                             async : false,
