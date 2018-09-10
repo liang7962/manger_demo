@@ -48,6 +48,7 @@ public class DuoImgController {
         file.transferTo(myFile);
         return "aa";
     }
+
     /**
      * @author: jinliang
      * @create: 2018/9/5 10:12

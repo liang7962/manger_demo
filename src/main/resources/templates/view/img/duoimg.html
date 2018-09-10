@@ -11,25 +11,25 @@
       	    <div class="photosUpload">
       	      <div class="photo-piece">
       	        <input onclick="localImg(this)" type="file" id="permitP1" name="" accept= "${base}/front/image/*">
-      	        <img src="${base}/front/images/btn-upload.jpg">
+      	        <img src="${base}/hplus/img/btn-upload.jpg">
       	        <input id="permitP1" name="permitP1" type="hidden" value="" class="requires"/>
       	        <span class="photo-piece-name">房产证第一页</span>
       	      </div>
       	      <div class="photo-piece">
       	        <input onclick="localImg(this)" id="permitP2" type="file" name="" accept= "${base}/front/image/*">
-      	        <img src="${base}/front/images/btn-upload.jpg">
+      	        <img src="${base}/hplus/img/btn-upload.jpg">
       	        <input id="permitP2" name="permitP2" type="hidden" value="" class="requires"/>
       	        <span class="photo-piece-name">房产证第二页</span>
       	      </div>
       	      <div class="photo-piece">
       	        <input onclick="localImg(this)"  id="permitP3" type="file" name="" accept= "${base}/front/image/*">
-      	        <img src="${base}/front/images/btn-upload.jpg">
+      	        <img src="${base}/hplus/img/btn-upload.jpg">
       	        <input id="permitP3" name="permitP3" type="hidden" value="" class="requires"/>
       	        <span class="photo-piece-name">房产证第三页</span>
       	      </div>
       	      <div class="photo-piece">
       	        <input onclick="localImg(this)"  id="permitP4" type="file" name="" accept= "${base}/front/image/*">
-      	        <img src="${base}/front/images/btn-upload.jpg">
+      	        <img src="${base}/hplus/img/btn-upload.jpg">
       	        <input id="permitP4" name="permitP4" type="hidden" value=""  class="requires"/>
       	        <span class="photo-piece-name">房产证第四页</span>
       	      </div>
@@ -46,8 +46,18 @@
         <div>
             <img alt="图片预览" src="" id="showHeadImg">
         </div>
-
+        <div id="bo">
+            <img src="${base}/hplus/img/btn-upload.jpg" style="width: 100%;height: auto;"/>
+        </div>
 </body>
+<style>
+#bo{
+    display:inline-block;
+     width: 400px;
+     height:400px;
+    }
+
+</style>
 <script src="${base}/hplus/js/jquery.min.js"></script>
 <script src="${base}/hplus/js/LocalResizeIMG.js"></script>
 <!--   mobileBUGFix.js 兼容修复移动设备       -->
