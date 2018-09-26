@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<#assign base="${springMacroRequestContext.contextPath}"/>
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+    <form action="#" type="post" id="houseApply">
+        <input type="file" id="picture" name="picture"/>
+        <img alt="图片预览" src="" id="showHeadImg">
+        <input type="button" onclick="validateForm()">
+    </form>
+</body>
+<script src="${base}/hplus/js/jquery.min.js"></script>
+<script>
+
+        function validateForm() {
+            var form1=document.getElementById("houseApply");
+            var formData=new FormData(form1);
+            formData.append("img",$("#picture")[0].files[0]);
+             $.ajax({
+                    url : "${base}/ftp/upload",
+                    type : "POST",
+                    data : formData,
+                    async : false,
+                    cache : false,
+                    contentType : false,
+                    processData : false,
+                    success : function() {
+                      alert("s");
+                    },
+                    error : function() {
+                       alert("f")
+                    }
+                });
+        }
+     $(function(){
+            $("#picture").bind("change",function() {
+                var url = null;
+                if (window.createObjectURL != undefined) {
+                    url = window.createObjectURL(this.files[0]);
+                } else if (window.URL != undefined) {
+                    url = window.URL.createObjectURL(this.files[0]);
+                } else if (window.webkitURL != undefined) {
+                    url = window.webkitURL.createObjectURL(this.files[0]);
+                }
+                console.log(this.files[0]);
+                $("#showHeadImg").attr("src",url);
+            });
+        });
+</script>
+</html>

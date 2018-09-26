@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+  <appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+	  <encoder>
+	    <Pattern>[%d{yyyy-MM-dd HH:mm:ss}] [%thread] %-5level %logger{36} - %msg %n</Pattern>
+	  </encoder>
+	  <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+          <!--设置过滤级别-->
+          <!--例如：将过滤器的日志级别配置为INFO，所有INFO级别的日志交给appender处理，非INFO级别的日志，被过滤掉-->
+          <level>INFO</level>
+          <!--<onMatch>:用于配置符合过滤条件的操作-->
+          <!--<onMismatch>:用于配置不符合过滤条件的操作-->
+	  </filter>
+ </appender>
+  
+  <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+      <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+          <FileNamePattern>./logs/%d{yyyy-MM-dd}.log</FileNamePattern>
+          <!-- <MaxHistory>365</MaxHistory> -->
+          <!-- 每产生一个日志文件，该日志文件的保存期限为30天 -->
+          <!--<maxHistory>30</maxHistory>
+          <timeBasedFileNamingAndTriggeringPolicy  class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+              &lt;!&ndash; maxFileSize:这是活动文件的大小，默认值是10MB，测试时可改成1KB看效果 &ndash;&gt;
+              <maxFileSize>1KB</maxFileSize>
+          </timeBasedFileNamingAndTriggeringPolicy>-->
+      </rollingPolicy>
+      <encoder>
+	    <Pattern>[%d{yyyy-MM-dd HH:mm:ss}] [%thread] %-5level %logger{36} - %msg %n</Pattern>
+     </encoder>
+  </appender>
+  
+  	<logger name="org.mybatis" level="DEBUG">
+		<appender-ref ref="consoleAppender"/>
+	</logger>
+	
+  <root levle="INFO">
+    <appender-ref ref="consoleAppender" />
+    <appender-ref ref="file" />
+  </root>
+  
+</configuration>
