@@ -2,6 +2,7 @@ package com.example.demo.controller.img;
 
 import com.example.demo.util.LoggerUtils;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -72,4 +73,15 @@ public class DuoImgController {
         }
         return "aa";
     }*/
+
+    @GetMapping("/form_webuploader")
+    public String webUploader() {
+        return "view/img/form_webuploader";
+    }
+    @GetMapping("/form_file_upload")
+    public String form_file_upload() {
+        return "view/img/form_file_upload";
+    }
+
+
 }
