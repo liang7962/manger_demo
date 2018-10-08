@@ -141,7 +141,60 @@ $().ready(function() {
     		// model页面的弹出层数据提交，必须指定需要刷新的model页面formId
     		ajaxModalSubmitTo(form, "pagerModelForm");
     	}
-    });    
+    });
+
+    $("#accountForm").validate({
+    	rules: {
+            accId: {
+    			required: true
+    			},
+            mobileNo: {
+    			required: true,
+    			chrMobile: true
+    			},
+            role: {
+    			required: true,
+                maxlength:1
+    			},
+            email: {
+    			required: true,
+                email: true
+    			},
+            wechatOpenId: {
+    			required: true,
+    			},
+            wechatUnionId: {
+    			required: true,
+    			}
+    	},
+    	messages: {
+            accId: {
+    			required: e + "请输入accId",
+    		},
+            mobileNo: {
+                required:  e + "请输入手机号",
+                chrMobile: e + "手机号格式错"
+            },
+            role: {
+                required:  e + "请输入角色",
+                maxlength:e + "角色长度输入有误"
+            },
+            email: {
+                required:  e + "请输入邮箱",
+                email: e + "邮箱格式错"
+            },
+            wechatOpenId: {
+                required:  e + "请输入wechatOpenId",
+            },
+            wechatUnionId: {
+                required:  e + "请输入wechatUnionId",
+            }
+    	},
+    	submitHandler:function(form){
+    		// model页面的弹出层数据提交，必须指定需要刷新的model页面formId
+    		ajaxModalSubmitTo(form, "pagerModelForm");
+    	}
+    });
     
     
     $("#updatePwdForm").validate({

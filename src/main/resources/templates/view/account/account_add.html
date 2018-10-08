@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<#assign base="${springMacroRequestContext.contextPath}"/>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <title>XX - 新增账户</title>
+
+    <meta name="keywords" content="XX - XX新增账户">
+    <meta name="description" content="XX - XX新增账户">
+
+    <link rel="shortcut icon" href="${base}/hplus/img/hft-logo.jpg">
+    <link href="${base}/hplus/css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+    <link href="${base}/hplus/css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+    <link href="${base}/hplus/css/animate.min.css" rel="stylesheet">
+    <link href="${base}/hplus/css/style.min862f.css?v=4.1.0" rel="stylesheet">
+    <link href="${base}/hplus/css/plugins/chosen/chosen.css" rel="stylesheet">
+
+</head>
+
+<body>
+<div class="col-sm-12">
+    <div class="ibox-content">
+        <form class="form-horizontal m-t" id="accountForm" autocomplete="off" action="${base}/account/account_add"
+              method="post">
+            <div class="hr-line-dashed"></div>
+            <div class="form-group">
+                <label class="control-label col-sm-3">用户ID:</label>
+                <div class="col-sm-8">
+                    <input class="form-control input-sm" type="text" autocomplete="off" id="" name="accId"
+                                                               value="" placeholder="站点号" />
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+            <div class="form-group">
+                <label class="control-label col-sm-3">用户手机号:</label>
+                <div class="col-sm-8">
+                   <input class="form-control input-sm" type="text" autocomplete="off" id="" name="mobileNo"
+                                              value="" placeholder="用户手机号" />
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+            <div class="form-group">
+                <label class="control-label col-sm-3">用户登录角色:</label>
+                <div class="col-sm-8">
+                   <input class="form-control input-sm" type="text" autocomplete="off" id="" name="role"
+                                              value="" placeholder="用户登录角色" />
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+            <div class="form-group">
+                <label class="control-label col-sm-3">用户邮箱:</label>
+                <div class="col-sm-8">
+                   <input class="form-control input-sm" type="text" autocomplete="off" id="" name="email"
+                                              value="" placeholder="用户邮箱" />
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+            <div class="form-group">
+                <label class="control-label col-sm-3">用户登录openId:</label>
+                <div class="col-sm-8">
+                   <input class="form-control input-sm" type="text" autocomplete="off" id="" name="wechatOpenId"
+                                              value="" placeholder="用户登录openId" />
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+            <div class="form-group">
+                <label class="control-label col-sm-3">用户登录unionId:</label>
+                <div class="col-sm-8">
+                   <input class="form-control input-sm" type="text" autocomplete="off" id="" name="wechatUnionId"
+                                              value="" placeholder="用户登录unionId" />
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+            <div class="form-group">
+                <div class="col-sm-3 col-sm-offset-3">
+                    <button class="btn btn-primary btn-rounded btn-block" type="submit" ><i class="fa fa-check"></i>&nbsp;&nbsp;提交
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="${base}/hplus/js/jquery.min.js?v=2.1.4"></script>
+<script src="${base}/hplus/js/bootstrap.min.js?v=3.3.6"></script>
+<script src="${base}/hplus/js/content.min.js?v=1.0.0"></script>
+<!-- jquery.validate -->
+<script src="${base}/hplus/js/plugins/validate/jquery.validate.min.js"></script>
+<script src="${base}/hplus/js/plugins/validate/messages_zh.min.js"></script>
+<script src="${base}/hplus/js/demo/form-validate.js"></script>
+
+<!-- chosen -->
+<script src="${base}/hplus/js/plugins/chosen/chosen.jquery.js"></script>
+
+<script src="${base}/hplus/js/jquery.form.js"></script>
+<script src="${base}/hplus/js/common.js"></script>
+<script src="${base}/hplus/js/jquery.ajax.js"></script>
+
+</body>
+</html>

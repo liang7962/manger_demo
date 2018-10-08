@@ -83,5 +83,10 @@ public class DuoImgController {
         return "view/img/form_file_upload";
     }
 
+    @RequestMapping("webuploaderFile")
+    public String webuploaderFile(HttpServletRequest request,HttpServletResponse response){
+        return "view/img/form_webuploader";
+    }
+
 
 }
