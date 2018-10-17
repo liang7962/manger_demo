@@ -40,7 +40,7 @@ public class DuoImgController {
         String truefile=file.getOriginalFilename();
         File mFile=new File("C:\\qt\\new");
         //判断是否已经有file文件夹
-        if (mFile.exists()) {
+        if (!mFile.isDirectory()) {
             mFile.mkdirs();
         }
         //将文件名称放入文件夹中
@@ -49,7 +49,6 @@ public class DuoImgController {
         file.transferTo(myFile);
         return "aa";
     }
-
     /**
      * @author: jinliang
      * @create: 2018/9/5 10:12
