@@ -21,7 +21,7 @@ public class WriteFTPFile {
                        String ftpHost, int ftpPort, String fileContent,
                        String writeTempFielPath) {
         FTPClient ftpClient = null;
-        LoggerUtils.info(getClass(),"开始上传文件到FTP.");
+        LoggerUtils.info(getClass(), "开始上传文件到FTP.");
         try {
             ftpClient = FTPUtil.getFTPClient(ftpHost, ftpPassword,
                     ftpUserName, ftpPort);
@@ -45,10 +45,10 @@ public class WriteFTPFile {
                 InputStream in = new FileInputStream(f);
                 ftpClient.storeFile(ftpPath, in);
                 in.close();
-                LoggerUtils.info(getClass(),"上传文件" + ftpPath + "到FTP成功!");
+                LoggerUtils.info(getClass(), "上传文件" + ftpPath + "到FTP成功!");
                 f.delete();
             } else {
-                LoggerUtils.info(getClass(),"写文件失败!");
+                LoggerUtils.info(getClass(), "写文件失败!");
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -64,7 +64,7 @@ public class WriteFTPFile {
     public void upload(String ftpPath, String ftpFileName, String ftpUserName, String ftpPassword,
                        String ftpHost, int ftpPort, File f) {
         FTPClient ftpClient = null;
-        LoggerUtils.info(getClass(),"开始上传文件到FTP.");
+        LoggerUtils.info(getClass(), "开始上传文件到FTP.");
         try {
             ftpClient = FTPUtil.getFTPClient(ftpHost, ftpPassword,
                     ftpUserName, ftpPort);
@@ -79,15 +79,15 @@ public class WriteFTPFile {
 
             //判断远端目录是否存在，不存在则创建
             if (ftpClient.makeDirectory(ftpPath)) {
-                LoggerUtils.info(getClass(),"目录不存在，创建目录成功");
+                LoggerUtils.info(getClass(), "目录不存在，创建目录成功");
             } else {
-                LoggerUtils.info(getClass(),"目录已存在");
+                LoggerUtils.info(getClass(), "目录已存在");
             }
 
             if (ftpClient.storeFile(ftpPath + ftpFileName, in)) {
-                LoggerUtils.info(getClass(),"上传文件" + f.getName() + "到FTP成功!");
+                LoggerUtils.info(getClass(), "上传文件" + f.getName() + "到FTP成功!");
             } else {
-                LoggerUtils.info(getClass(),"上传文件" + f.getName() + "到FTP失败!");
+                LoggerUtils.info(getClass(), "上传文件" + f.getName() + "到FTP失败!");
             }
             in.close();
 
@@ -113,11 +113,11 @@ public class WriteFTPFile {
     public boolean write(String fileName, String fileContext,
                          String writeTempFielPath) {
         try {
-            LoggerUtils.info(getClass(),"开始写配置文件");
+            LoggerUtils.info(getClass(), "开始写配置文件");
             File f = new File(writeTempFielPath + "/" + fileName);
             if (!f.exists()) {
                 if (!f.createNewFile()) {
-                    LoggerUtils.info(getClass(),"文件不存在，创建失败!");
+                    LoggerUtils.info(getClass(), "文件不存在，创建失败!");
                 }
             }
             BufferedWriter bw = new BufferedWriter(new FileWriter(f, true));
@@ -126,7 +126,7 @@ public class WriteFTPFile {
             bw.close();
             return true;
         } catch (Exception e) {
-            LoggerUtils.error(getClass(),"写文件没有成功");
+            LoggerUtils.error(getClass(), "写文件没有成功");
             e.printStackTrace();
             return false;
         }

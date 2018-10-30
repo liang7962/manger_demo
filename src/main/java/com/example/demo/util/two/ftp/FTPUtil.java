@@ -29,17 +29,17 @@ public class FTPUtil {
             ftpClient.connect(ftpHost, ftpPort);// 连接FTP服务器
             ftpClient.login(ftpUserName, ftpPassword);// 登陆FTP服务器
             if (!FTPReply.isPositiveCompletion(ftpClient.getReplyCode())) {
-                LoggerUtils.info(FTPUtil.class,"未连接到FTP，用户名或密码错误。");
+                LoggerUtils.info(FTPUtil.class, "未连接到FTP，用户名或密码错误。");
                 ftpClient.disconnect();
             } else {
-                LoggerUtils.info(FTPUtil.class,"FTP连接成功。");
+                LoggerUtils.info(FTPUtil.class, "FTP连接成功。");
             }
         } catch (SocketException e) {
             e.printStackTrace();
-            LoggerUtils.info(FTPUtil.class,"FTP的IP地址可能错误，请正确配置。");
+            LoggerUtils.info(FTPUtil.class, "FTP的IP地址可能错误，请正确配置。");
         } catch (IOException e) {
             e.printStackTrace();
-            LoggerUtils.info(FTPUtil.class,"FTP的端口错误,请正确配置。");
+            LoggerUtils.info(FTPUtil.class, "FTP的端口错误,请正确配置。");
         }
         return ftpClient;
     }

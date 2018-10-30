@@ -27,7 +27,7 @@ public class ReadFTPFile {
         FileInputStream inFile = null;
         InputStream in = null;
         FTPClient ftpClient = null;
-        LoggerUtils.info(ReadFTPFile.class,"开始读取绝对路径" + ftpPath + "文件!");
+        LoggerUtils.info(ReadFTPFile.class, "开始读取绝对路径" + ftpPath + "文件!");
         try {
             ftpClient = FTPUtil.getFTPClient(ftpHost, ftpPassword, ftpUserName,
                     ftpPort);
@@ -37,15 +37,15 @@ public class ReadFTPFile {
             ftpClient.changeWorkingDirectory(ftpPath);
             in = ftpClient.retrieveFileStream(fileName);
         } catch (FileNotFoundException e) {
-            LoggerUtils.error(getClass(),"没有找到" + ftpPath + "文件");
+            LoggerUtils.error(getClass(), "没有找到" + ftpPath + "文件");
             e.printStackTrace();
             return "下载配置文件失败，请联系管理员.";
         } catch (SocketException e) {
-            LoggerUtils.error(getClass(),"连接FTP失败.");
+            LoggerUtils.error(getClass(), "连接FTP失败.");
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-            LoggerUtils.error(getClass(),"文件读取错误。");
+            LoggerUtils.error(getClass(), "文件读取错误。");
             e.printStackTrace();
             return "配置文件读取失败，请联系管理员.";
         }
@@ -57,7 +57,7 @@ public class ReadFTPFile {
                     resultBuffer.append(data + "\n");
                 }
             } catch (IOException e) {
-                LoggerUtils.error(getClass(),"文件读取错误。");
+                LoggerUtils.error(getClass(), "文件读取错误。");
                 e.printStackTrace();
                 return "配置文件读取失败，请联系管理员.";
             } finally {
@@ -68,7 +68,7 @@ public class ReadFTPFile {
                 }
             }
         } else {
-            LoggerUtils.error(getClass(),"in为空，不能读取。");
+            LoggerUtils.error(getClass(), "in为空，不能读取。");
             return "配置文件读取失败，请联系管理员.";
         }
         return resultBuffer.toString();

@@ -1,6 +1,7 @@
 package com.example.demo.util.two.excel;
 
-import com.framework.application.util.log.LogU;
+import com.example.demo.util.LoggerUtils;
+import com.example.demo.util.two.log.LogU;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.hssf.usermodel.*;
 import org.apache.poi.ss.usermodel.*;
@@ -145,7 +146,7 @@ public class ExcelUtil<T> {
 
         } catch (Exception e) {
 //            logger.error("ERROR::", e);
-            LogU.e("ExcelUtil", "ERROR", e);
+            LoggerUtils.info(getClass(),"ExcelUtil"+ "ERROR"+ e);
         }
         return list;
     }

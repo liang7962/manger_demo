@@ -11,4 +11,6 @@ public interface TestService {
     public AdminRegister getAdminRegistert(String accId);
 
     public List<AdminRegisterExample> getAll(AdminRegisterExample adminRegisterExample);
+
+    public AdminRegister addAdminRegistert(AdminRegister adminRegister);
 }

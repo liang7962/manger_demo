@@ -52,5 +52,22 @@ public class DemoApplicationTests {
 		ftpClient.storeFile("test.png",inputStream);
 		ftpClient.logout();
 	}
-
+//	@Test
+//	public void test1(){
+//		List<Integer> list=new ArrayList();
+//		list.add(3);
+//		list.add(33);
+//		List<Integer> list2=new ArrayList();
+//		list2.add(3);
+//		list2.add(33);
+//		int[] as={2,22};
+////		int[] asa={2,22};
+//		testDemo(1,2,list,as,list2);
+//	}
+//	public Integer testDemo(Object... args){
+//		for(Object arg:args){
+//			System.out.println(arg+">>>>>");
+//		}
+//		return 1;
+//	}
 }
