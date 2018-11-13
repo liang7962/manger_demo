@@ -7,10 +7,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class WebSocketContorller {
 
-
+    /**
+     * @author: jinliang
+     * @create: 2018/11/13 14:24
+     * @desc: 进入消息推送页面
+     * @param
+     **/
     @RequestMapping(value = "/websocket_test",method = RequestMethod.GET)
     public String websocketTest( ){
-        return "websocket_demo";
+        return "view/webSocket/runoob_websocket";
     }
 
 
