@@ -33,9 +33,9 @@ public class TestServiceImpl implements TestService{
     @Transactional(propagation=Propagation.REQUIRES_NEW,readOnly=false, rollbackFor=Exception.class)
     public AdminRegister addAdminRegistert(AdminRegister adminRegister) {
         adminRegisterMapper.insert(adminRegister);
-        adminRegister.setMobileNo("13112345678");
-        adminRegisterMapper.updateByPrimaryKey(adminRegister);
-        int i=1/0;
+//        adminRegister.setMobileNo("13112345678");
+//        adminRegisterMapper.updateByPrimaryKey(adminRegister);
+//        int i=1/0;
         return null;
     }
 

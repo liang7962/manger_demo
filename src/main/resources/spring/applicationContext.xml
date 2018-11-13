@@ -50,7 +50,7 @@
 	
 	<context:component-scan base-package="com.example.demo" />
 
-	<!-- 支持异步方法执行 -->
+	<!-- 自动加载处理器映射器和适配器 -->
 	<mvc:annotation-driven />
 
 	<!-- <mvc:interceptors>

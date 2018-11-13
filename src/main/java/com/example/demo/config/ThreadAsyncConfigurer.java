@@ -1,4 +1,4 @@
-package com.example.demo.component;
+package com.example.demo.config;
 
 import org.springframework.aop.interceptor.AsyncUncaughtExceptionHandler;
 import org.springframework.context.annotation.Bean;
@@ -14,12 +14,12 @@ import java.util.concurrent.Executor;
  * ①利用＠EnableAsync 注解开启异步任务支持。
  * ②配置类实现AsyncConfigurer 接口并重写getAsyncExecutor 方法，并返回一个
  * ThreadPoolTaskExecutor ，这样我们就获得了一个基于线程池TaskExecutor。
- * Author: 王俊超
+ * Author: 王俊超      主要针对ThreadPoolTaskScheduler线程池
  * Date: 2017-07-11 07:57
  * All Rights Reserved !!!
  */
 @Configuration
-@ComponentScan("com.example.demo.component")
+//@ComponentScan("com.example.demo.component")
 @EnableAsync
 public class ThreadAsyncConfigurer implements AsyncConfigurer{
 

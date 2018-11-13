@@ -7,11 +7,11 @@ import java.util.concurrent.Future;
 public interface DemoAsyncService {
 
 	@Async
-    public Future<String> doTaskOne() throws Exception;
+     Future<String> doTaskOne() throws Exception;
 
 	@Async
-    public Future<String> doTaskTwo() throws Exception;
+     Future<String> doTaskTwo() throws Exception;
 
 	@Async
-    public Future<String> doTaskThree() throws Exception;
+     Future<String> doTaskThree() throws Exception;
 }
